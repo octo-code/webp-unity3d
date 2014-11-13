@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "snappy.net", "snappy.net.csproj", "{86590E06-80FA-47A2-BB1F-84FD87372FC9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webp.net", "webp.net.csproj", "{86590E06-80FA-47A2-BB1F-84FD87372FC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
