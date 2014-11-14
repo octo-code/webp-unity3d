@@ -48,13 +48,6 @@ namespace WebP
 
             if (lError == Error.Success)
             {
-                for (int i = 0; i < lRawData.Length; i += 4)
-                {
-                    var tmp = lRawData[i];
-                    lRawData[i] = lRawData[i + 2];
-                    lRawData[i + 2] = tmp;
-                }
-
                 lTexture2D.LoadRawTextureData(lRawData);
                 lTexture2D.Apply();
             }
