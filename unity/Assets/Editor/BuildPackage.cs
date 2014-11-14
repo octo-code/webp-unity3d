@@ -10,29 +10,35 @@ public class BuildPackage
 	{
 		"Assets/Plugins"
 	};
-	public const string m_PackageOutputPath = "../build/webp.unitypackage";
+	public const string m_PackageOutputPath = @"../build/webp.unitypackage";
 
 	[MenuItem("Build/WebP/Build Package")]
 	public static void BuildUnityPackage()
 	{
-		string lIOSPluginsPath = "Assets/Plugins/iOS/WebP";
+		var lIOSPluginsPath = @"Assets/Plugins/iOS/WebP";
 
 		Directory.CreateDirectory(lIOSPluginsPath);
 
-		/*
-		File.Copy("../snappy/snappy.cc",                Path.Combine(lIOSPluginsPath, "snappy.cpp"), true);
-		File.Copy("../snappy/snappy.h",                 Path.Combine(lIOSPluginsPath, "snappy.h"), true);
-		File.Copy("../snappy/snappy-c.cc",              Path.Combine(lIOSPluginsPath, "snappy-c.cpp"), true);
-		File.Copy("../snappy/snappy-c.h",               Path.Combine(lIOSPluginsPath, "snappy-c.h"), true);
-		File.Copy("../snappy/snappy-internal.h",        Path.Combine(lIOSPluginsPath, "snappy-internal.h"), true);
-		File.Copy("../snappy/snappy-sinksource.cc",     Path.Combine(lIOSPluginsPath, "snappy-sinksource.cpp"), true);
-		File.Copy("../snappy/snappy-sinksource.h",      Path.Combine(lIOSPluginsPath, "snappy-sinksource.h"), true);
-		File.Copy("../snappy/snappy-stubs-internal.cc", Path.Combine(lIOSPluginsPath, "snappy-stubs-internal.cpp"), true);
-		File.Copy("../snappy/snappy-stubs-internal.h",  Path.Combine(lIOSPluginsPath, "snappy-stubs-internal.h"), true);
-		File.Copy("../snappy/snappy-stubs-public.h",    Path.Combine(lIOSPluginsPath, "snappy-stubs-public.h"), true);
-		*/
+        var lSourceDirectory = new DirectoryInfo("../webp/libwebp/src");
 
-		AssetDatabase.Refresh();
+        var lSrcFiles       = lSourceDirectory.GetFiles("*.c", SearchOption.AllDirectories);
+        var lHeaderFiles    = lSourceDirectory.GetFiles("*.h", SearchOption.AllDirectories);
+
+        for (int lIndex = 0; lIndex < lSrcFiles.Length; ++lIndex)
+        {
+            string lRelativePath = lSrcFiles[lIndex].FullName.Substring(lSourceDirectory.FullName.Length + 1);
+            Directory.CreateDirectory(Path.GetDirectoryName(Path.Combine(lIOSPluginsPath, lRelativePath)));
+            File.Copy(lSrcFiles[lIndex].FullName, Path.Combine(lIOSPluginsPath, lRelativePath), true);
+        }
+
+        for (int lIndex = 0; lIndex < lHeaderFiles.Length; ++lIndex)
+        {
+            string lRelativePath = lHeaderFiles[lIndex].FullName.Substring(lSourceDirectory.FullName.Length + 1);
+            Directory.CreateDirectory(Path.GetDirectoryName(Path.Combine(lIOSPluginsPath, lRelativePath)));
+            File.Copy(lHeaderFiles[lIndex].FullName, Path.Combine(lIOSPluginsPath, lRelativePath), true);
+        }
+
+        AssetDatabase.Refresh();
 
 		AssetDatabase.ExportPackage(m_PackageInputPaths, m_PackageOutputPath, ExportPackageOptions.Recurse);
 
