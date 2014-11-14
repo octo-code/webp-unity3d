@@ -24,8 +24,7 @@ public class WebPTest : MonoBehaviour
 
             var lData = File.ReadAllBytes(@"Assets/Example/Data/image01.webp");
 
-			Texture2D lTexture2D = new Texture2D(1024, 1024, TextureFormat.RGBA32, false, false);
-            lTexture2D.LoadWebP(lData, out lError);
+            Texture2D lTexture2D = Texture2DExt.CreateTexture2DFromWebP(lData, true, true, out lError);
 
 			if (lError == Error.Success)
 			{

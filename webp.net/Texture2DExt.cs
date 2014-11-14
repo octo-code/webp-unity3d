@@ -21,10 +21,48 @@ namespace WebP
         /// <param name="lData"></param>
         /// <param name="lError"></param>
         /// <returns></returns>
-        public static unsafe Texture2D CreateTexture2DFromWebP(byte[] lData, out Error lError)
+        public static unsafe Texture2D CreateTexture2DFromWebP(byte[] lData, bool lMipmaps, bool lLinear, out Error lError)
         {
             lError = 0;
-            return null;
+            byte[] lRawData = null;
+            Texture2D lTexture2D = null;
+            int lWidth = 0, lHeight = 0, lLength = lData.Length;
+
+            fixed (byte* lDataPtr = lData)
+            {
+                if (NativeBindings.WebPGetInfo((IntPtr)lDataPtr, (UIntPtr)lLength, ref lWidth, ref lHeight) == 0)
+                {
+                    lError = Error.InvalidHeader;
+                    throw new Exception("Invalid WebP header detected");
+                }
+
+                try
+                {
+                    lRawData = new byte[lWidth * lHeight * 4];
+                    fixed (byte* lRawDataPtr = lRawData)
+                    {
+                        IntPtr result = NativeBindings.WebPDecodeRGBAInto((IntPtr)lDataPtr, (UIntPtr)lLength, (IntPtr)lRawDataPtr, (UIntPtr)(4 * lWidth * lHeight), 4 * lWidth);
+                        if ((IntPtr)lRawDataPtr != result)
+                        {
+                            lError = Error.DecodingError;
+                            throw new Exception("Failed to decode WebP image with error " + (long)result);
+                        }
+                    }
+                    lError = Error.Success;
+                }
+                finally
+                {
+                }
+            }
+
+            if (lError == Error.Success)
+            {
+                lTexture2D = new Texture2D(lWidth, lHeight, TextureFormat.RGBA32, false, false);
+                lTexture2D.LoadRawTextureData(lRawData);
+                lTexture2D.Apply();
+            }
+
+            return lTexture2D;
         }
 
         /// <summary>
