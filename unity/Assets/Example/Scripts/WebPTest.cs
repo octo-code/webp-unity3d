@@ -35,6 +35,10 @@ public class WebPTest : MonoBehaviour
 			{
 				Debug.LogError("Webp Load Error : " + lError.ToString());
 			}
+
+            lData = lTexture2D.EncodeToWebP(50, out lError);
+
+            File.WriteAllBytes(@"Assets/Example/Data/image02.webp", lData);
         }
 	}
 }

@@ -3,3 +3,8 @@
 /webp/Android/obj
 /webp/Android/libs
 /webp.net/*.suo
+/webp.net/obj
+/webp.net/bin
+/unity/*.csproj
+/unity/*.sln
+/unity/*.userprefs

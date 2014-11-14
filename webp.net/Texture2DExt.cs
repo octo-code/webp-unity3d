@@ -10,8 +10,29 @@ using WebP.Extern;
 
 namespace WebP
 {
-    public static class Texture2DExt 
+    /// <summary>
+    /// 
+    /// </summary>
+    public static class Texture2DExt
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="lData"></param>
+        /// <param name="lError"></param>
+        /// <returns></returns>
+        public static unsafe Texture2D CreateTexture2DFromWebP(byte[] lData, out Error lError)
+        {
+            lError = 0;
+            return null;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="lTexture2D"></param>
+        /// <param name="lData"></param>
+        /// <param name="lError"></param>
         public static unsafe void LoadWebP(this Texture2D lTexture2D, byte[] lData, out Error lError)
         {
             lError = 0;
@@ -53,82 +74,59 @@ namespace WebP
             }
         }
 
-        public static unsafe byte[] EncodeWebP(this Texture2D lTexture2D, out Error lError)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="lTexture2D"></param>
+        /// <param name="lError"></param>
+        /// <returns></returns>
+        public static unsafe byte[] EncodeToWebP(this Texture2D lTexture2D, float lQuality, out Error lError)
         {
             lError = 0;
-            return null;
-        }
 
-        /*
-        /// <summary>
-        /// Encodes the given RGB(A) bitmap to the given stream. Specify quality = -1 for lossless, otherwise specify a value between 0 and 100.
-        /// </summary>
-        /// <param name="from"></param>
-        /// <param name="to"></param>
-        /// <param name="quality"></param>
-        /// <param name="noAlpha"></param>
-        public void Encode(Bitmap from, Stream to, float quality, bool noAlpha = false)
-        {
-            IntPtr result;
-            long length;
+            if (lQuality < -1)  lQuality = -1;
+            if (lQuality > 100) lQuality = 100;
 
-            Encode(from, quality, noAlpha, out result, out length);
+            Color32[] lRawColorData = lTexture2D.GetPixels32();
+            int lWidth  = lTexture2D.width;
+            int lHeight = lTexture2D.height;
+
+            IntPtr lResult = IntPtr.Zero;
+
+            GCHandle lPinnedArray = GCHandle.Alloc(lRawColorData, GCHandleType.Pinned);
+            IntPtr lRawDataPtr = lPinnedArray.AddrOfPinnedObject();
+
+            byte[] lOutputBuffer = null;
+
             try
             {
-                byte[] buffer = new byte[4096];
-                for (int i = 0; i < length; i += buffer.Length)
-                {
-                    int used = (int)Math.Min((int)buffer.Length, length - i);
-                    Marshal.Copy((IntPtr)((long)result + i), buffer, 0, used);
-                    to.Write(buffer, 0, used);
-                }
-            }
-            finally
-            {
-                NativeBindings.WebPSafeFree(result);
-            }
+                int lLength;
 
-        }
-        /// <summary>
-        /// Encodes the given RGB(A) bitmap to the given stream. Specify quality = -1 for lossless, otherwise specify a value between 0 and 100.
-        /// </summary>
-        /// <param name="b"></param>
-        /// <param name="quality"></param>
-        /// <param name="noAlpha"></param>
-        /// <param name="result"></param>
-        /// <param name="length"></param>
-        public void Encode(Bitmap b, float quality, bool noAlpha, out IntPtr result, out long length)
-        {
-            if (quality < -1) quality = -1;
-            if (quality > 100) quality = 100;
-            int w = b.Width;
-            int h = b.Height;
-            var bd = b.LockBits(new Rectangle(0, 0, w, h), System.Drawing.Imaging.ImageLockMode.ReadOnly, b.PixelFormat);
-            try
-            {
-                result = IntPtr.Zero;
-
-                if (b.PixelFormat == System.Drawing.Imaging.PixelFormat.Format32bppArgb && !noAlpha)
+                if (lQuality == -1)
                 {
-                    if (quality == -1) length = (long)NativeBindings.WebPEncodeLosslessBGRA(bd.Scan0, w, h, bd.Stride, ref result);
-                    else length = (long)NativeBindings.WebPEncodeBGRA(bd.Scan0, w, h, bd.Stride, quality, ref result);
-                }
-                else if (b.PixelFormat == System.Drawing.Imaging.PixelFormat.Format32bppRgb || (b.PixelFormat == System.Drawing.Imaging.PixelFormat.Format32bppArgb && noAlpha))
-                {
-                    if (quality == -1) length = (long)NativeBindings.WebPEncodeLosslessBGR(bd.Scan0, w, h, bd.Stride, ref result);
-                    else length = (long)NativeBindings.WebPEncodeBGR(bd.Scan0, w, h, bd.Stride, quality, ref result);
+                    lLength = (int)NativeBindings.WebPEncodeLosslessRGBA(lRawDataPtr, lWidth, lHeight, 4 * lWidth, ref lResult);
                 }
                 else
                 {
-                    throw new NotSupportedException("Only Format32bppArgb and Format32bppRgb bitmaps are supported");
+                    lLength = (int)NativeBindings.WebPEncodeRGBA(lRawDataPtr, lWidth, lHeight, 4 * lWidth, lQuality, ref lResult);
                 }
-                if (length == 0) throw new Exception("WebP encode failed!");
 
+                if (lLength == 0)
+                {
+                    throw new Exception("WebP encode failed!");
+                }
+
+                lOutputBuffer = new byte[lLength];
+                Marshal.Copy(lResult, lOutputBuffer, 0, lLength);
             }
             finally
             {
-                b.UnlockBits(bd);
+                NativeBindings.WebPSafeFree(lResult);
             }
-        }*/
+
+            lPinnedArray.Free();
+
+            return lOutputBuffer;
+        }
     }
 }
