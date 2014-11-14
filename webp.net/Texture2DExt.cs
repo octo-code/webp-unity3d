@@ -32,7 +32,7 @@ namespace WebP
                     lRawData = new byte[lWidth * lHeight * 4];
                     fixed (byte* lRawDataPtr = lRawData)
                     {
-                        IntPtr result = NativeBindings.WebPDecodeBGRAInto((IntPtr)lDataPtr, (UIntPtr)lLength, (IntPtr)lRawDataPtr, (UIntPtr)(4 * lWidth * lHeight), 4 * lWidth);
+                        IntPtr result = NativeBindings.WebPDecodeRGBAInto((IntPtr)lDataPtr, (UIntPtr)lLength, (IntPtr)lRawDataPtr, (UIntPtr)(4 * lWidth * lHeight), 4 * lWidth);
                         if ((IntPtr)lRawDataPtr != result)
                         {
                             lError = Error.DecodingError;
