@@ -8,6 +8,7 @@ public class BuildPackage
 {
 	public static string[] m_PackageInputPaths = 
 	{
+        "Assets/Editor/WebP",
 		"Assets/Plugins"
 	};
 	public const string m_PackageOutputPath = @"../build/webp.unitypackage";
@@ -15,7 +16,7 @@ public class BuildPackage
 	[MenuItem("Build/WebP/Build Package")]
 	public static void BuildUnityPackage()
 	{
-		var lIOSPluginsPath = @"Assets/Plugins/iOS/WebP";
+		var lIOSPluginsPath = @"Assets/Editor/WebP/iOS/src";
 
 		Directory.CreateDirectory(lIOSPluginsPath);
 
