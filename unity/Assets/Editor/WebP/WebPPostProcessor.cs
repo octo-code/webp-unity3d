@@ -6,7 +6,7 @@ using UnityEditor.Callbacks;
 using System.IO;
 using System.Diagnostics;
 
-public class SnappyBuildPostprocessor
+public class WebPBuildPostprocessor
 {
 	[PostProcessBuild]
 	public static void OnPostprocessBuild(BuildTarget target, string pathToBuiltProject)
