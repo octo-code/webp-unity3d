@@ -30,19 +30,22 @@ namespace WebP
 
             fixed (byte* lDataPtr = lData)
             {
-                if (NativeBindings.WebPGetInfo((IntPtr)lDataPtr, (UIntPtr)lLength, ref lWidth, ref lHeight) == 0)
-                {
-                    lError = Error.InvalidHeader;
-                    throw new Exception("Invalid WebP header detected");
-                }
-
                 try
                 {
+                    if (NativeBindings.WebPGetInfo((IntPtr)lDataPtr, (UIntPtr)lLength, ref lWidth, ref lHeight) == 0)
+                    {
+                        lError = Error.InvalidHeader;
+                        throw new Exception("Invalid WebP header detected");
+                    }
+
                     lRawData = new byte[lWidth * lHeight * 4];
                     fixed (byte* lRawDataPtr = lRawData)
                     {
-                        IntPtr result = NativeBindings.WebPDecodeRGBAInto((IntPtr)lDataPtr, (UIntPtr)lLength, (IntPtr)lRawDataPtr, (UIntPtr)(4 * lWidth * lHeight), 4 * lWidth);
-                        if ((IntPtr)lRawDataPtr != result)
+                        int lStride = 4 * lWidth;
+                        byte* lTmpDataPtr = lRawDataPtr + (lHeight - 1) * lStride;
+
+                        IntPtr result = NativeBindings.WebPDecodeRGBAInto((IntPtr)lDataPtr, (UIntPtr)lLength, (IntPtr)lTmpDataPtr, (UIntPtr)(4 * lWidth * lHeight), -lStride);
+                        if ((IntPtr)lTmpDataPtr != result)
                         {
                             lError = Error.DecodingError;
                             throw new Exception("Failed to decode WebP image with error " + (long)result);
@@ -91,8 +94,11 @@ namespace WebP
                     lRawData = new byte[lWidth * lHeight * 4];
                     fixed (byte* lRawDataPtr = lRawData)
                     {
-                        IntPtr result = NativeBindings.WebPDecodeRGBAInto((IntPtr)lDataPtr, (UIntPtr)lLength, (IntPtr)lRawDataPtr, (UIntPtr)(4 * lWidth * lHeight), 4 * lWidth);
-                        if ((IntPtr)lRawDataPtr != result)
+                        int lStride = 4 * lWidth;
+                        byte* lTmpDataPtr = lRawDataPtr + (lHeight - 1) * lStride;
+
+                        IntPtr result = NativeBindings.WebPDecodeRGBAInto((IntPtr)lDataPtr, (UIntPtr)lLength, (IntPtr)lTmpDataPtr, (UIntPtr)(4 * lWidth * lHeight), -lStride);
+                        if ((IntPtr)lTmpDataPtr != result)
                         {
                             lError = Error.DecodingError;
                             throw new Exception("Failed to decode WebP image with error " + (long)result);
