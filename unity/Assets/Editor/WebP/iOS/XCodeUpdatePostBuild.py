@@ -5,9 +5,9 @@ import re
 import hashlib
 import logging
 
-def main(argv = sys.argv, pluginName = 'snappy-unity3d'):
+def main(argv = sys.argv, pluginName = 'webp-unity3d'):
     unityRootProject = os.getcwd()
-    sys.stdout = Logger(unityRootProject + '/Snappy_XcodeUpdatePostBuild.log')
+    sys.stdout = Logger(unityRootProject + '/WebP_XcodeUpdatePostBuild.log')
     if argv is None or len(argv) < 3:
         print 'Exiting: Incorrect number of arguments'
         print ', '.join(map(str, argv))
@@ -16,14 +16,14 @@ def main(argv = sys.argv, pluginName = 'snappy-unity3d'):
         print 'Exiting: PostprocessBuildPlayer for Unity will only run for iPhone projects.'
         return 2
     projectPath = sys.argv[1]
-    print '--- Updating Unity-iPhone.xcodeproj/project.pbxproj for snappy-unity3d integration ---'
+    print '--- Updating Unity-iPhone.xcodeproj/project.pbxproj for webp-unity3d integration ---'
     try:
         projectFile = projectPath + '/Unity-iPhone.xcodeproj/project.pbxproj'
-        pluginPath = unityRootProject + '/Assets/Editor/Snappy/iOS/src/'
+        pluginPath = unityRootProject + '/Assets/Editor/WebP/iOS/src/'
         p = XcodeProject(projectFile)
         p.projectPath = projectPath
-        print 'Adding group "snappy-unity3d"'
-        group = p.addGroup('snappy-unity3d')
+        print 'Adding group "webp-unity3d"'
+        group = p.addGroup('webp-unity3d')
         print 'Enabling Obj-C exceptions'
         p.findAndReplace('GCC_ENABLE_OBJC_EXCEPTIONS = NO;', 'GCC_ENABLE_OBJC_EXCEPTIONS = YES;')
        
@@ -74,7 +74,7 @@ def main(argv = sys.argv, pluginName = 'snappy-unity3d'):
         print 'Failed with error: %s' % e
         return 1
 
-    print '--- Finished snappy-unity3d integration ---'
+    print '--- Finished webp-unity3d integration ---'
 
 
 class XcodeProject(object):
@@ -360,7 +360,7 @@ class XcodeProject(object):
 
 class Logger(object):
 
-    def __init__(self, filename = 'Snappy_XcodeUpdatePostBuild.log'):
+    def __init__(self, filename = 'WebP_XcodeUpdatePostBuild.log'):
         self.terminal = sys.stdout
         self.log = open(filename, 'wb')
 
