@@ -222,7 +222,7 @@ class XcodeProject(object):
     def addFileReference(self, name, path, sourceTree, group, makePathRelative = True):
         uuid = None
         wrapper = self.typeForFile(name)
-        escapedName = re.escape(name)
+        escapedName = re.escape(path + "/" + name)
         if makePathRelative:
             path = os.path.relpath(path, self.projectPath)
         match = re.search('\\/\\* Begin PBXGroup section \\*\\/\n((?:.|\n)+?)\\/\\* End PBXGroup section \\*\\/', self.data)
