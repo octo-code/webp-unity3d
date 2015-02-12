@@ -26,9 +26,24 @@ public class WebPBuildPostprocessor
 		var lProcessInfo = new ProcessStartInfo("python");
 		lProcessInfo.Arguments = string.Format("./Assets/Editor/WebP/iOS/XcodeUpdatePostBuild.py {0} iPhone",
 			pathToBuiltProject);
+		lProcessInfo.RedirectStandardError = true;
+		lProcessInfo.RedirectStandardOutput = true;
+		lProcessInfo.UseShellExecute = false;
 
 		var lProcess = Process.Start(lProcessInfo);
 		lProcess.WaitForExit();
+
+		string stderror = lProcess.StandardError.ReadToEnd();
+		string stdout = lProcess.StandardOutput.ReadToEnd();
+		if (!string.IsNullOrEmpty(stderror))
+		{
+			UnityEngine.Debug.LogError(stderror);
+		}
+
+		if (!string.IsNullOrEmpty(stdout))
+		{
+			UnityEngine.Debug.Log(stdout);
+		}
 	}
 
 	private static void OnPostprocessBuildWSA(string pathToBuiltProject)
