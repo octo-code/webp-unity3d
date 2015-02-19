@@ -110,7 +110,8 @@ namespace WebP
                     fixed (byte* lRawDataPtr = lRawData)
                     {
                         int lStride = 4 * lWidth;
-                        //byte* lTmpDataPtr = lRawDataPtr + (lHeight - 1) * lStride;
+
+						byte* lTmpDataPtr = lRawDataPtr + (lHeight - 1) * lStride;
 
 						WebPDecoderConfig config = new WebPDecoderConfig();
 
@@ -134,8 +135,8 @@ namespace WebP
 						}
 
 						config.output.colorspace = WEBP_CSP_MODE.MODE_RGBA;
-						config.output.u.RGBA.rgba = (IntPtr)lRawDataPtr;
-						config.output.u.RGBA.stride = lStride;
+						config.output.u.RGBA.rgba = (IntPtr)lTmpDataPtr;
+						config.output.u.RGBA.stride = -lStride;
 						config.output.u.RGBA.size = (UIntPtr)(lHeight * lStride);
 						config.output.height = lHeight;
 						config.output.width = lWidth;
@@ -146,13 +147,6 @@ namespace WebP
 						{
 							throw new Exception(string.Format("Failed WebPDecode with error {0}.", result.ToString()));
 						}
-
-//                        IntPtr result = NativeBindings.WebPDecodeRGBAInto((IntPtr)lDataPtr, (UIntPtr)lLength, (IntPtr)lTmpDataPtr, (UIntPtr)(4 * lWidth * lHeight), -lStride);
-//                        if ((IntPtr)lTmpDataPtr != result)
-//                        {
-//                            lError = Error.DecodingError;
-//                            throw new Exception("Failed to decode WebP image with error " + (long)result);
-//                        }
                     }
                     lError = Error.Success;
                 }
