@@ -70,6 +70,111 @@ namespace WebP
 			};
 		}
 
+		/// <summary>
+		/// Gets dimensions from a webp format block of data.
+		/// </summary>
+		/// <param name="lData">L data.</param>
+		/// <param name="lWidth">L width.</param>
+		/// <param name="lHeight">L height.</param>
+		public static unsafe void GetWebPDimensions(byte[] lData, out int lWidth, out int lHeight)
+		{
+			fixed (byte* lDataPtr = lData)
+			{
+				lWidth = 0;
+				lHeight = 0;
+				if (NativeBindings.WebPGetInfo((IntPtr)lDataPtr, (UIntPtr)lData.Length, ref lWidth, ref lHeight) == 0)
+				{
+					throw new Exception("Invalid WebP header detected");
+				}
+			}
+		}
+
+		/// <summary>
+		/// Loads an image from webp into a byte array in RGBA format.
+		/// </summary>
+		/// <returns>The RGBA from web p.</returns>
+		/// <param name="lData">L data.</param>
+		/// <param name="lWidth">L width.</param>
+		/// <param name="lHeight">L height.</param>
+		/// <param name="lMipmaps">If set to <c>true</c> l mipmaps.</param>
+		/// <param name="lError">L error.</param>
+		/// <param name="scalingFunction">Scaling function.</param>
+		public static unsafe byte[] LoadRGBAFromWebP(byte[] lData, ref int lWidth, ref int lHeight, bool lMipmaps, out Error lError, ScalingFunction scalingFunction = null)
+		{
+			lError = 0;
+			byte[] lRawData = null;
+			int lLength = lData.Length;
+
+			fixed (byte* lDataPtr = lData)
+			{
+				// If we've been supplied a function to alter the width and height, use that now.
+				if (scalingFunction != null)
+				{
+					scalingFunction(ref lWidth, ref lHeight);
+				}
+				
+				// If mipmaps are requested we need to create 1/3 more memory for the mipmaps to be generated in.
+				int numBytesRequired = lWidth * lHeight * 4;
+				if (lMipmaps)
+				{
+					numBytesRequired = Mathf.CeilToInt((numBytesRequired * 4.0f) / 3.0f);
+				}
+				
+				lRawData = new byte[numBytesRequired];
+				fixed (byte* lRawDataPtr = lRawData)
+				{
+					int lStride = 4 * lWidth;
+
+					// As we have to reverse the y order of the data, we pass through a negative stride and 
+					// pass through a pointer to the last line of the data.
+					byte* lTmpDataPtr = lRawDataPtr + (lHeight - 1) * lStride;
+					
+					WebPDecoderConfig config = new WebPDecoderConfig();
+					
+					if (NativeBindings.WebPInitDecoderConfig(ref config) == 0)
+					{
+						throw new Exception("WebPInitDecoderConfig failed. Wrong version?");
+					}
+
+					// Set up decode options
+					config.options.use_threads = 1;
+					if (scalingFunction != null)
+					{
+						config.options.use_scaling = 1;
+					}
+					config.options.scaled_width = lWidth;
+					config.options.scaled_height = lHeight;
+
+					// read the .webp input file information
+					VP8StatusCode result = NativeBindings.WebPGetFeatures((IntPtr)lDataPtr, (UIntPtr)lLength, ref config.input);
+					if (result != VP8StatusCode.VP8_STATUS_OK)
+					{
+						throw new Exception(string.Format("Failed WebPGetFeatures with error {0}.", result.ToString()));
+					}
+
+					// specify the output format
+					config.output.colorspace = WEBP_CSP_MODE.MODE_RGBA;
+					config.output.u.RGBA.rgba = (IntPtr)lTmpDataPtr;
+					config.output.u.RGBA.stride = -lStride;  
+					config.output.u.RGBA.size = (UIntPtr)(lHeight * lStride);
+					config.output.height = lHeight;
+					config.output.width = lWidth;
+					config.output.is_external_memory = 1;
+
+
+					// Decode
+					result = NativeBindings.WebPDecode((IntPtr)lDataPtr, (UIntPtr)lLength, ref config);
+					if (result != VP8StatusCode.VP8_STATUS_OK)
+					{
+						throw new Exception(string.Format("Failed WebPDecode with error {0}.", result.ToString()));
+					}
+				}
+				lError = Error.Success;
+			}
+			return lRawData;
+		}
+		
+
         /// <summary>
         /// 
         /// </summary>
@@ -79,81 +184,12 @@ namespace WebP
 		public static unsafe Texture2D CreateTexture2DFromWebP(byte[] lData, bool lMipmaps, bool lLinear, out Error lError, ScalingFunction scalingFunction = null )
         {
             lError = 0;
-            byte[] lRawData = null;
             Texture2D lTexture2D = null;
-            int lWidth = 0, lHeight = 0, lLength = lData.Length;
+            int lWidth = 0, lHeight = 0;
 
-            fixed (byte* lDataPtr = lData)
-            {
-                try
-                {
-                    if (NativeBindings.WebPGetInfo((IntPtr)lDataPtr, (UIntPtr)lLength, ref lWidth, ref lHeight) == 0)
-                    {
-                        lError = Error.InvalidHeader;
-                        throw new Exception("Invalid WebP header detected");
-                    }
+			GetWebPDimensions(lData, out lWidth, out lHeight);
 
-					// If we've been supplied a function to alter the width and height, use that now.
-					if (scalingFunction != null)
-					{
-						scalingFunction(ref lWidth, ref lHeight);
-					}
-
-					// If mipmaps are requested we need to create 1/3 more memory for the mipmaps to be generated in.
-					int numBytesRequired = lWidth * lHeight * 4;
-					if (lMipmaps)
-					{
-						numBytesRequired = Mathf.CeilToInt((numBytesRequired * 4.0f) / 3.0f);
-					}
-					
-					lRawData = new byte[numBytesRequired];
-                    fixed (byte* lRawDataPtr = lRawData)
-                    {
-                        int lStride = 4 * lWidth;
-
-						byte* lTmpDataPtr = lRawDataPtr + (lHeight - 1) * lStride;
-
-						WebPDecoderConfig config = new WebPDecoderConfig();
-
-						if (NativeBindings.WebPInitDecoderConfig(ref config) == 0)
-						{
-							throw new Exception("WebPInitDecoderConfig failed. Wrong version?");
-						}
-
-						config.options.use_threads = 1;
-						if (scalingFunction != null)
-						{
-							config.options.use_scaling = 1;
-						}
-						config.options.scaled_width = lWidth;
-						config.options.scaled_height = lHeight;
-
-						VP8StatusCode result = NativeBindings.WebPGetFeatures((IntPtr)lDataPtr, (UIntPtr)lLength, ref config.input);
-						if (result != VP8StatusCode.VP8_STATUS_OK)
-						{
-							throw new Exception(string.Format("Failed WebPGetFeatures with error {0}.", result.ToString()));
-						}
-
-						config.output.colorspace = WEBP_CSP_MODE.MODE_RGBA;
-						config.output.u.RGBA.rgba = (IntPtr)lTmpDataPtr;
-						config.output.u.RGBA.stride = -lStride;
-						config.output.u.RGBA.size = (UIntPtr)(lHeight * lStride);
-						config.output.height = lHeight;
-						config.output.width = lWidth;
-						config.output.is_external_memory = 1;
-
-						result = NativeBindings.WebPDecode((IntPtr)lDataPtr, (UIntPtr)lLength, ref config);
-						if (result != VP8StatusCode.VP8_STATUS_OK)
-						{
-							throw new Exception(string.Format("Failed WebPDecode with error {0}.", result.ToString()));
-						}
-                    }
-                    lError = Error.Success;
-                }
-                finally
-                {
-                }
-            }
+			byte[] lRawData = LoadRGBAFromWebP(lData, ref lWidth, ref lHeight, lMipmaps, out lError, scalingFunction);
 
             if (lError == Error.Success)
             {
@@ -171,47 +207,21 @@ namespace WebP
         /// <param name="lTexture2D"></param>
         /// <param name="lData"></param>
         /// <param name="lError"></param>
-        public static unsafe void LoadWebP(this Texture2D lTexture2D, byte[] lData, out Error lError)
+        public static unsafe void LoadWebP(this Texture2D lTexture2D, byte[] lData, out Error lError, ScalingFunction scalingFunction = null)
         {
             lError = 0;
-            byte[] lRawData = null;
+			bool lMipmaps = lTexture2D.mipmapCount != 1;
 
-            fixed (byte* lDataPtr = lData)
-            {
-                int lWidth = 0, lHeight = 0, lLength = lData.Length;
-
-                if (NativeBindings.WebPGetInfo((IntPtr)lDataPtr, (UIntPtr)lLength, ref lWidth, ref lHeight) == 0)
-                {
-                    lError = Error.InvalidHeader;
-                    throw new Exception("Invalid WebP header detected");
-                }
-
-                try
-                {
-                    lRawData = new byte[lWidth * lHeight * 4];
-                    fixed (byte* lRawDataPtr = lRawData)
-                    {
-                        int lStride = 4 * lWidth;
-                        byte* lTmpDataPtr = lRawDataPtr + (lHeight - 1) * lStride;
-
-                        IntPtr result = NativeBindings.WebPDecodeRGBAInto((IntPtr)lDataPtr, (UIntPtr)lLength, (IntPtr)lTmpDataPtr, (UIntPtr)(4 * lWidth * lHeight), -lStride);
-                        if ((IntPtr)lTmpDataPtr != result)
-                        {
-                            lError = Error.DecodingError;
-                            throw new Exception("Failed to decode WebP image with error " + (long)result);
-                        }
-                    }
-                    lError = Error.Success;
-                }
-                finally
-                {
-                }
-            }
+			int lWidth = 0, lHeight = 0;
+			
+			GetWebPDimensions(lData, out lWidth, out lHeight);
+			
+			byte[] lRawData = LoadRGBAFromWebP(lData, ref lWidth, ref lHeight, lMipmaps, out lError, scalingFunction);
 
             if (lError == Error.Success)
             {
                 lTexture2D.LoadRawTextureData(lRawData);
-                lTexture2D.Apply();
+				lTexture2D.Apply(lMipmaps, true);
             }
         }
 
