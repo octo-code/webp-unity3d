@@ -2099,10 +2099,10 @@ namespace WebP.Extern
         class External
         {
             /// Return Type: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPGetDecoderVersion")]
+            [DllImportAttribute("webp", EntryPoint = "WebPGetDecoderVersion")]
             public static extern int WebPGetDecoderVersion();
 
-            [DllImportAttribute("libwebp", EntryPoint = "WebPSafeFree")]
+            [DllImportAttribute("webp", EntryPoint = "WebPSafeFree")]
             public static extern void WebPSafeFree(IntPtr toDeallocate);
 
 
@@ -2117,7 +2117,7 @@ namespace WebP.Extern
             /// <param name="width"></param>
             /// <param name="height"></param>
             /// <returns></returns>
-            [DllImportAttribute("libwebp", EntryPoint = "WebPGetInfo")]
+            [DllImportAttribute("webp", EntryPoint = "WebPGetInfo")]
             public static extern int WebPGetInfo([InAttribute()] IntPtr data, UIntPtr data_size, ref int width, ref int height);
 
 
@@ -2126,7 +2126,7 @@ namespace WebP.Extern
             ///data_size: size_t->unsigned int
             ///width: int*
             ///height: int*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPDecodeRGBA")]
+            [DllImportAttribute("webp", EntryPoint = "WebPDecodeRGBA")]
             public static extern IntPtr WebPDecodeRGBA([InAttribute()] IntPtr data, UIntPtr data_size, ref int width, ref int height);
 
 
@@ -2135,7 +2135,7 @@ namespace WebP.Extern
             ///data_size: size_t->unsigned int
             ///width: int*
             ///height: int*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPDecodeARGB")]
+            [DllImportAttribute("webp", EntryPoint = "WebPDecodeARGB")]
             public static extern IntPtr WebPDecodeARGB([InAttribute()] IntPtr data, UIntPtr data_size, ref int width, ref int height);
 
 
@@ -2144,7 +2144,7 @@ namespace WebP.Extern
             ///data_size: size_t->unsigned int
             ///width: int*
             ///height: int*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPDecodeBGRA")]
+            [DllImportAttribute("webp", EntryPoint = "WebPDecodeBGRA")]
             public static extern IntPtr WebPDecodeBGRA([InAttribute()] IntPtr data, UIntPtr data_size, ref int width, ref int height);
 
 
@@ -2153,7 +2153,7 @@ namespace WebP.Extern
             ///data_size: size_t->unsigned int
             ///width: int*
             ///height: int*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPDecodeRGB")]
+            [DllImportAttribute("webp", EntryPoint = "WebPDecodeRGB")]
             public static extern IntPtr WebPDecodeRGB([InAttribute()] IntPtr data, UIntPtr data_size, ref int width, ref int height);
 
 
@@ -2162,7 +2162,7 @@ namespace WebP.Extern
             ///data_size: size_t->unsigned int
             ///width: int*
             ///height: int*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPDecodeBGR")]
+            [DllImportAttribute("webp", EntryPoint = "WebPDecodeBGR")]
             public static extern IntPtr WebPDecodeBGR([InAttribute()] IntPtr data, UIntPtr data_size, ref int width, ref int height);
 
 
@@ -2175,7 +2175,7 @@ namespace WebP.Extern
             ///v: uint8_t**
             ///stride: int*
             ///uv_stride: int*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPDecodeYUV")]
+            [DllImportAttribute("webp", EntryPoint = "WebPDecodeYUV")]
             public static extern IntPtr WebPDecodeYUV([InAttribute()] IntPtr data, UIntPtr data_size, ref int width, ref int height, ref IntPtr u, ref IntPtr v, ref int stride, ref int uv_stride);
 
 
@@ -2185,7 +2185,7 @@ namespace WebP.Extern
             ///output_buffer: uint8_t*
             ///output_buffer_size: size_t->unsigned int
             ///output_stride: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPDecodeRGBAInto")]
+            [DllImportAttribute("webp", EntryPoint = "WebPDecodeRGBAInto")]
             public static extern IntPtr WebPDecodeRGBAInto([InAttribute()] IntPtr data, UIntPtr data_size, IntPtr output_buffer, UIntPtr output_buffer_size, int output_stride);
 
 
@@ -2195,7 +2195,7 @@ namespace WebP.Extern
             ///output_buffer: uint8_t*
             ///output_buffer_size: size_t->unsigned int
             ///output_stride: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPDecodeARGBInto")]
+            [DllImportAttribute("webp", EntryPoint = "WebPDecodeARGBInto")]
             public static extern IntPtr WebPDecodeARGBInto([InAttribute()] IntPtr data, UIntPtr data_size, IntPtr output_buffer, UIntPtr output_buffer_size, int output_stride);
 
 
@@ -2205,7 +2205,7 @@ namespace WebP.Extern
             ///output_buffer: uint8_t*
             ///output_buffer_size: size_t->unsigned int
             ///output_stride: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPDecodeBGRAInto")]
+            [DllImportAttribute("webp", EntryPoint = "WebPDecodeBGRAInto")]
             public static extern IntPtr WebPDecodeBGRAInto([InAttribute()] IntPtr data, UIntPtr data_size, IntPtr output_buffer, UIntPtr output_buffer_size, int output_stride);
 
 
@@ -2215,7 +2215,7 @@ namespace WebP.Extern
             ///output_buffer: uint8_t*
             ///output_buffer_size: size_t->unsigned int
             ///output_stride: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPDecodeRGBInto")]
+            [DllImportAttribute("webp", EntryPoint = "WebPDecodeRGBInto")]
             public static extern IntPtr WebPDecodeRGBInto([InAttribute()] IntPtr data, UIntPtr data_size, IntPtr output_buffer, UIntPtr output_buffer_size, int output_stride);
 
 
@@ -2225,7 +2225,7 @@ namespace WebP.Extern
             ///output_buffer: uint8_t*
             ///output_buffer_size: size_t->unsigned int
             ///output_stride: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPDecodeBGRInto")]
+            [DllImportAttribute("webp", EntryPoint = "WebPDecodeBGRInto")]
             public static extern IntPtr WebPDecodeBGRInto([InAttribute()] IntPtr data, UIntPtr data_size, IntPtr output_buffer, UIntPtr output_buffer_size, int output_stride);
 
 
@@ -2241,26 +2241,26 @@ namespace WebP.Extern
             ///v: uint8_t*
             ///v_size: size_t->unsigned int
             ///v_stride: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPDecodeYUVInto")]
+            [DllImportAttribute("webp", EntryPoint = "WebPDecodeYUVInto")]
             public static extern IntPtr WebPDecodeYUVInto([InAttribute()] IntPtr data, UIntPtr data_size, IntPtr luma, UIntPtr luma_size, int luma_stride, IntPtr u, UIntPtr u_size, int u_stride, IntPtr v, UIntPtr v_size, int v_stride);
 
 
             /// Return Type: int
             ///param0: WebPDecBuffer*
             ///param1: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPInitDecBufferInternal")]
+            [DllImportAttribute("webp", EntryPoint = "WebPInitDecBufferInternal")]
             public static extern int WebPInitDecBufferInternal(ref WebPDecBuffer param0, int param1);
 
 
             /// Return Type: void
             ///buffer: WebPDecBuffer*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPFreeDecBuffer")]
+            [DllImportAttribute("webp", EntryPoint = "WebPFreeDecBuffer")]
             public static extern void WebPFreeDecBuffer(ref WebPDecBuffer buffer);
 
 
             /// Return Type: WebPIDecoder*
             ///output_buffer: WebPDecBuffer*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPINewDecoder")]
+            [DllImportAttribute("webp", EntryPoint = "WebPINewDecoder")]
             public static extern IntPtr WebPINewDecoder(ref WebPDecBuffer output_buffer);
 
 
@@ -2269,7 +2269,7 @@ namespace WebP.Extern
             ///output_buffer: uint8_t*
             ///output_buffer_size: size_t->unsigned int
             ///output_stride: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPINewRGB")]
+            [DllImportAttribute("webp", EntryPoint = "WebPINewRGB")]
             public static extern IntPtr WebPINewRGB(WEBP_CSP_MODE csp, IntPtr output_buffer, UIntPtr output_buffer_size, int output_stride);
 
 
@@ -2286,7 +2286,7 @@ namespace WebP.Extern
             ///a: uint8_t*
             ///a_size: size_t->unsigned int
             ///a_stride: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPINewYUVA")]
+            [DllImportAttribute("webp", EntryPoint = "WebPINewYUVA")]
             public static extern IntPtr WebPINewYUVA(IntPtr luma, UIntPtr luma_size, int luma_stride, IntPtr u, UIntPtr u_size, int u_stride, IntPtr v, UIntPtr v_size, int v_stride, IntPtr a, UIntPtr a_size, int a_stride);
 
 
@@ -2300,13 +2300,13 @@ namespace WebP.Extern
             ///v: uint8_t*
             ///v_size: size_t->unsigned int
             ///v_stride: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPINewYUV")]
+            [DllImportAttribute("webp", EntryPoint = "WebPINewYUV")]
             public static extern IntPtr WebPINewYUV(IntPtr luma, UIntPtr luma_size, int luma_stride, IntPtr u, UIntPtr u_size, int u_stride, IntPtr v, UIntPtr v_size, int v_stride);
 
 
             /// Return Type: void
             ///idec: WebPIDecoder*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPIDelete")]
+            [DllImportAttribute("webp", EntryPoint = "WebPIDelete")]
             public static extern void WebPIDelete(ref WebPIDecoder idec);
 
 
@@ -2314,7 +2314,7 @@ namespace WebP.Extern
             ///idec: WebPIDecoder*
             ///data: uint8_t*
             ///data_size: size_t->unsigned int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPIAppend")]
+            [DllImportAttribute("webp", EntryPoint = "WebPIAppend")]
             public static extern VP8StatusCode WebPIAppend(ref WebPIDecoder idec, [InAttribute()] IntPtr data, UIntPtr data_size);
 
 
@@ -2322,7 +2322,7 @@ namespace WebP.Extern
             ///idec: WebPIDecoder*
             ///data: uint8_t*
             ///data_size: size_t->unsigned int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPIUpdate")]
+            [DllImportAttribute("webp", EntryPoint = "WebPIUpdate")]
             public static extern VP8StatusCode WebPIUpdate(ref WebPIDecoder idec, [InAttribute()] IntPtr data, UIntPtr data_size);
 
 
@@ -2332,7 +2332,7 @@ namespace WebP.Extern
             ///width: int*
             ///height: int*
             ///stride: int*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPIDecGetRGB")]
+            [DllImportAttribute("webp", EntryPoint = "WebPIDecGetRGB")]
             public static extern IntPtr WebPIDecGetRGB(ref WebPIDecoder idec, ref int last_y, ref int width, ref int height, ref int stride);
 
 
@@ -2347,7 +2347,7 @@ namespace WebP.Extern
             ///stride: int*
             ///uv_stride: int*
             ///a_stride: int*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPIDecGetYUVA")]
+            [DllImportAttribute("webp", EntryPoint = "WebPIDecGetYUVA")]
             public static extern IntPtr WebPIDecGetYUVA(ref WebPIDecoder idec, ref int last_y, ref IntPtr u, ref IntPtr v, ref IntPtr a, ref int width, ref int height, ref int stride, ref int uv_stride, ref int a_stride);
 
 
@@ -2357,7 +2357,7 @@ namespace WebP.Extern
             ///top: int*
             ///width: int*
             ///height: int*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPIDecodedArea")]
+            [DllImportAttribute("webp", EntryPoint = "WebPIDecodedArea")]
             public static extern IntPtr WebPIDecodedArea(ref WebPIDecoder idec, ref int left, ref int top, ref int width, ref int height);
 
 
@@ -2366,14 +2366,14 @@ namespace WebP.Extern
             ///param1: size_t->unsigned int
             ///param2: WebPBitstreamFeatures*
             ///param3: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPGetFeaturesInternal")]
+            [DllImportAttribute("webp", EntryPoint = "WebPGetFeaturesInternal")]
             public static extern VP8StatusCode WebPGetFeaturesInternal([InAttribute()] IntPtr param0, UIntPtr param1, ref WebPBitstreamFeatures param2, int param3);
 
 
             /// Return Type: int
             ///param0: WebPDecoderConfig*
             ///param1: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPInitDecoderConfigInternal")]
+            [DllImportAttribute("webp", EntryPoint = "WebPInitDecoderConfigInternal")]
             public static extern int WebPInitDecoderConfigInternal(ref WebPDecoderConfig param0, int param1);
 
 
@@ -2381,7 +2381,7 @@ namespace WebP.Extern
             ///data: uint8_t*
             ///data_size: size_t->unsigned int
             ///config: WebPDecoderConfig*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPIDecode")]
+            [DllImportAttribute("webp", EntryPoint = "WebPIDecode")]
             public static extern IntPtr WebPIDecode([InAttribute()] IntPtr data, UIntPtr data_size, ref WebPDecoderConfig config);
 
 
@@ -2389,12 +2389,12 @@ namespace WebP.Extern
             ///data: uint8_t*
             ///data_size: size_t->unsigned int
             ///config: WebPDecoderConfig*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPDecode")]
+            [DllImportAttribute("webp", EntryPoint = "WebPDecode")]
             public static extern VP8StatusCode WebPDecode([InAttribute()] IntPtr data, UIntPtr data_size, ref WebPDecoderConfig config);
 
 
             /// Return Type: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPGetEncoderVersion")]
+            [DllImportAttribute("webp", EntryPoint = "WebPGetEncoderVersion")]
             public static extern int WebPGetEncoderVersion();
 
 
@@ -2405,7 +2405,7 @@ namespace WebP.Extern
             ///stride: int
             ///quality_factor: float
             ///output: uint8_t**
-            [DllImportAttribute("libwebp", EntryPoint = "WebPEncodeRGB")]
+            [DllImportAttribute("webp", EntryPoint = "WebPEncodeRGB")]
             public static extern UIntPtr WebPEncodeRGB([InAttribute()] IntPtr rgb, int width, int height, int stride, float quality_factor, ref IntPtr output);
 
 
@@ -2416,7 +2416,7 @@ namespace WebP.Extern
             ///stride: int
             ///quality_factor: float
             ///output: uint8_t**
-            [DllImportAttribute("libwebp", EntryPoint = "WebPEncodeBGR")]
+            [DllImportAttribute("webp", EntryPoint = "WebPEncodeBGR")]
             public static extern UIntPtr WebPEncodeBGR([InAttribute()] IntPtr bgr, int width, int height, int stride, float quality_factor, ref IntPtr output);
 
 
@@ -2427,7 +2427,7 @@ namespace WebP.Extern
             ///stride: int
             ///quality_factor: float
             ///output: uint8_t**
-            [DllImportAttribute("libwebp", EntryPoint = "WebPEncodeRGBA")]
+            [DllImportAttribute("webp", EntryPoint = "WebPEncodeRGBA")]
             public static extern UIntPtr WebPEncodeRGBA([InAttribute()] IntPtr rgba, int width, int height, int stride, float quality_factor, ref IntPtr output);
 
 
@@ -2438,7 +2438,7 @@ namespace WebP.Extern
             ///stride: int
             ///quality_factor: float
             ///output: uint8_t**
-            [DllImportAttribute("libwebp", EntryPoint = "WebPEncodeBGRA")]
+            [DllImportAttribute("webp", EntryPoint = "WebPEncodeBGRA")]
             public static extern IntPtr WebPEncodeBGRA([InAttribute()] IntPtr bgra, int width, int height, int stride, float quality_factor, ref IntPtr output);
 
 
@@ -2448,7 +2448,7 @@ namespace WebP.Extern
             ///height: int
             ///stride: int
             ///output: uint8_t**
-            [DllImportAttribute("libwebp", EntryPoint = "WebPEncodeLosslessRGB")]
+            [DllImportAttribute("webp", EntryPoint = "WebPEncodeLosslessRGB")]
             public static extern UIntPtr WebPEncodeLosslessRGB([InAttribute()] IntPtr rgb, int width, int height, int stride, ref IntPtr output);
 
 
@@ -2458,7 +2458,7 @@ namespace WebP.Extern
             ///height: int
             ///stride: int
             ///output: uint8_t**
-            [DllImportAttribute("libwebp", EntryPoint = "WebPEncodeLosslessBGR")]
+            [DllImportAttribute("webp", EntryPoint = "WebPEncodeLosslessBGR")]
             public static extern UIntPtr WebPEncodeLosslessBGR([InAttribute()] IntPtr bgr, int width, int height, int stride, ref IntPtr output);
 
 
@@ -2468,7 +2468,7 @@ namespace WebP.Extern
             ///height: int
             ///stride: int
             ///output: uint8_t**
-            [DllImportAttribute("libwebp", EntryPoint = "WebPEncodeLosslessRGBA")]
+            [DllImportAttribute("webp", EntryPoint = "WebPEncodeLosslessRGBA")]
             public static extern UIntPtr WebPEncodeLosslessRGBA([InAttribute()] IntPtr rgba, int width, int height, int stride, ref IntPtr output);
 
 
@@ -2478,7 +2478,7 @@ namespace WebP.Extern
             ///height: int
             ///stride: int
             ///output: uint8_t**
-            [DllImportAttribute("libwebp", EntryPoint = "WebPEncodeLosslessBGRA")]
+            [DllImportAttribute("webp", EntryPoint = "WebPEncodeLosslessBGRA")]
             public static extern UIntPtr WebPEncodeLosslessBGRA([InAttribute()] IntPtr bgra, int width, int height, int stride, ref IntPtr output);
 
 
@@ -2487,19 +2487,19 @@ namespace WebP.Extern
             ///param1: WebPPreset->Anonymous_017d4167_f53e_4b3d_b029_592ff5c3f80b
             ///param2: float
             ///param3: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPConfigInitInternal")]
+            [DllImportAttribute("webp", EntryPoint = "WebPConfigInitInternal")]
             public static extern int WebPConfigInitInternal(ref WebPConfig param0, WebPPreset param1, float param2, int param3);
 
 
             /// Return Type: int
             ///config: WebPConfig*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPValidateConfig")]
+            [DllImportAttribute("webp", EntryPoint = "WebPValidateConfig")]
             public static extern int WebPValidateConfig(ref WebPConfig config);
 
 
             /// Return Type: void
             ///writer: WebPMemoryWriter*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPMemoryWriterInit")]
+            [DllImportAttribute("webp", EntryPoint = "WebPMemoryWriterInit")]
             public static extern void WebPMemoryWriterInit(ref WebPMemoryWriter writer);
 
 
@@ -2507,33 +2507,33 @@ namespace WebP.Extern
             ///data: uint8_t*
             ///data_size: size_t->unsigned int
             ///picture: WebPPicture*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPMemoryWrite")]
+            [DllImportAttribute("webp", EntryPoint = "WebPMemoryWrite")]
             public static extern int WebPMemoryWrite([InAttribute()] IntPtr data, UIntPtr data_size, ref WebPPicture picture);
 
 
             /// Return Type: int
             ///param0: WebPPicture*
             ///param1: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPPictureInitInternal")]
+            [DllImportAttribute("webp", EntryPoint = "WebPPictureInitInternal")]
             public static extern int WebPPictureInitInternal(ref WebPPicture param0, int param1);
 
 
             /// Return Type: int
             ///picture: WebPPicture*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPPictureAlloc")]
+            [DllImportAttribute("webp", EntryPoint = "WebPPictureAlloc")]
             public static extern int WebPPictureAlloc(ref WebPPicture picture);
 
 
             /// Return Type: void
             ///picture: WebPPicture*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPPictureFree")]
+            [DllImportAttribute("webp", EntryPoint = "WebPPictureFree")]
             public static extern void WebPPictureFree(ref WebPPicture picture);
 
 
             /// Return Type: int
             ///src: WebPPicture*
             ///dst: WebPPicture*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPPictureCopy")]
+            [DllImportAttribute("webp", EntryPoint = "WebPPictureCopy")]
             public static extern int WebPPictureCopy(ref WebPPicture src, ref WebPPicture dst);
 
 
@@ -2555,7 +2555,7 @@ namespace WebP.Extern
             /// <param name="metric_type">0 = PSNR, 1 = SSIM, 2 = LSIM</param>
             /// <param name="result"></param>
             /// <returns></returns>
-            [DllImportAttribute("libwebp", EntryPoint = "WebPPictureDistortion")]
+            [DllImportAttribute("webp", EntryPoint = "WebPPictureDistortion")]
             public static extern int WebPPictureDistortion(ref WebPPicture src, ref WebPPicture reference, int metric_type, ref float result);
 
 
@@ -2567,7 +2567,7 @@ namespace WebP.Extern
             ///top: int
             ///width: int
             ///height: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPPictureCrop")]
+            [DllImportAttribute("webp", EntryPoint = "WebPPictureCrop")]
             public static extern int WebPPictureCrop(ref WebPPicture picture, int left, int top, int width, int height);
 
 
@@ -2578,13 +2578,13 @@ namespace WebP.Extern
             ///width: int
             ///height: int
             ///dst: WebPPicture*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPPictureView")]
+            [DllImportAttribute("webp", EntryPoint = "WebPPictureView")]
             public static extern int WebPPictureView(ref WebPPicture src, int left, int top, int width, int height, ref WebPPicture dst);
 
 
             /// Return Type: int
             ///picture: WebPPicture*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPPictureIsView")]
+            [DllImportAttribute("webp", EntryPoint = "WebPPictureIsView")]
             public static extern int WebPPictureIsView(ref WebPPicture picture);
 
 
@@ -2592,7 +2592,7 @@ namespace WebP.Extern
             ///pic: WebPPicture*
             ///width: int
             ///height: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPPictureRescale")]
+            [DllImportAttribute("webp", EntryPoint = "WebPPictureRescale")]
             public static extern int WebPPictureRescale(ref WebPPicture pic, int width, int height);
 
 
@@ -2600,7 +2600,7 @@ namespace WebP.Extern
             ///picture: WebPPicture*
             ///rgb: uint8_t*
             ///rgb_stride: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPPictureImportRGB")]
+            [DllImportAttribute("webp", EntryPoint = "WebPPictureImportRGB")]
             public static extern int WebPPictureImportRGB(ref WebPPicture picture, [InAttribute()] IntPtr rgb, int rgb_stride);
 
 
@@ -2608,7 +2608,7 @@ namespace WebP.Extern
             ///picture: WebPPicture*
             ///rgba: uint8_t*
             ///rgba_stride: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPPictureImportRGBA")]
+            [DllImportAttribute("webp", EntryPoint = "WebPPictureImportRGBA")]
             public static extern int WebPPictureImportRGBA(ref WebPPicture picture, [InAttribute()] IntPtr rgba, int rgba_stride);
 
 
@@ -2616,7 +2616,7 @@ namespace WebP.Extern
             ///picture: WebPPicture*
             ///rgbx: uint8_t*
             ///rgbx_stride: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPPictureImportRGBX")]
+            [DllImportAttribute("webp", EntryPoint = "WebPPictureImportRGBX")]
             public static extern int WebPPictureImportRGBX(ref WebPPicture picture, [InAttribute()] IntPtr rgbx, int rgbx_stride);
 
 
@@ -2624,7 +2624,7 @@ namespace WebP.Extern
             ///picture: WebPPicture*
             ///bgr: uint8_t*
             ///bgr_stride: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPPictureImportBGR")]
+            [DllImportAttribute("webp", EntryPoint = "WebPPictureImportBGR")]
             public static extern int WebPPictureImportBGR(ref WebPPicture picture, [InAttribute()] IntPtr bgr, int bgr_stride);
 
 
@@ -2632,7 +2632,7 @@ namespace WebP.Extern
             ///picture: WebPPicture*
             ///bgra: uint8_t*
             ///bgra_stride: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPPictureImportBGRA")]
+            [DllImportAttribute("webp", EntryPoint = "WebPPictureImportBGRA")]
             public static extern int WebPPictureImportBGRA(ref WebPPicture picture, [InAttribute()] IntPtr bgra, int bgra_stride);
 
 
@@ -2640,39 +2640,39 @@ namespace WebP.Extern
             ///picture: WebPPicture*
             ///bgrx: uint8_t*
             ///bgrx_stride: int
-            [DllImportAttribute("libwebp", EntryPoint = "WebPPictureImportBGRX")]
+            [DllImportAttribute("webp", EntryPoint = "WebPPictureImportBGRX")]
             public static extern int WebPPictureImportBGRX(ref WebPPicture picture, [InAttribute()] IntPtr bgrx, int bgrx_stride);
 
 
             /// Return Type: int
             ///picture: WebPPicture*
             ///colorspace: WebPEncCSP->Anonymous_84ce7065_fe91_48b4_93d8_1f0e84319dba
-            [DllImportAttribute("libwebp", EntryPoint = "WebPPictureARGBToYUVA")]
+            [DllImportAttribute("webp", EntryPoint = "WebPPictureARGBToYUVA")]
             public static extern int WebPPictureARGBToYUVA(ref WebPPicture picture, WebPEncCSP colorspace);
 
 
             /// Return Type: int
             ///picture: WebPPicture*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPPictureYUVAToARGB")]
+            [DllImportAttribute("webp", EntryPoint = "WebPPictureYUVAToARGB")]
             public static extern int WebPPictureYUVAToARGB(ref WebPPicture picture);
 
 
             /// Return Type: void
             ///picture: WebPPicture*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPCleanupTransparentArea")]
+            [DllImportAttribute("webp", EntryPoint = "WebPCleanupTransparentArea")]
             public static extern void WebPCleanupTransparentArea(ref WebPPicture picture);
 
 
             /// Return Type: int
             ///picture: WebPPicture*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPPictureHasTransparency")]
+            [DllImportAttribute("webp", EntryPoint = "WebPPictureHasTransparency")]
             public static extern int WebPPictureHasTransparency(ref WebPPicture picture);
 
 
             /// Return Type: int
             ///config: WebPConfig*
             ///picture: WebPPicture*
-            [DllImportAttribute("libwebp", EntryPoint = "WebPEncode")]
+            [DllImportAttribute("webp", EntryPoint = "WebPEncode")]
             public static extern int WebPEncode(ref WebPConfig config, ref WebPPicture picture);
         }
 
