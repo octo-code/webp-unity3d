@@ -648,8 +648,10 @@ namespace WebP.Extern
         private const string WEBP_LIB             
 #if UNITY_IPHONE && !UNITY_EDITOR
             = "__Internal";
+#elif UNITY_EDITOR_OSX
+            = "libwebp";
 #else
-            = "webp";
+			= "webp";
 #endif
 
 

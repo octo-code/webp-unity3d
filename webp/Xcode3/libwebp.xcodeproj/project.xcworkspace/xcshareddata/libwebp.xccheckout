@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E800C4B3-C4BF-453A-B2D2-FD168D5C99BB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>libwebp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>272F684BDB48C12FB82F63EFB90FF2436BBA2473</key>
+		<string>https://chromium.googlesource.com/webm/libwebp</string>
+		<key>7A1C10A6A4CD442768902D40BECB5880E571EF50</key>
+		<string>https://github.com/octo-code/webp-unity3d</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>webp/Xcode3/libwebp.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>272F684BDB48C12FB82F63EFB90FF2436BBA2473</key>
+		<string>../../../..webp/libwebp</string>
+		<key>7A1C10A6A4CD442768902D40BECB5880E571EF50</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/octo-code/webp-unity3d</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7A1C10A6A4CD442768902D40BECB5880E571EF50</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>272F684BDB48C12FB82F63EFB90FF2436BBA2473</string>
+			<key>IDESourceControlWCCName</key>
+			<string>libwebp</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7A1C10A6A4CD442768902D40BECB5880E571EF50</string>
+			<key>IDESourceControlWCCName</key>
+			<string>webp-unity3d</string>
+		</dict>
+	</array>
+</dict>
+</plist>
