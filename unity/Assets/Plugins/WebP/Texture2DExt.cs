@@ -76,17 +76,23 @@ namespace WebP
 		/// <param name="lData">L data.</param>
 		/// <param name="lWidth">L width.</param>
 		/// <param name="lHeight">L height.</param>
-		public static unsafe void GetWebPDimensions(byte[] lData, out int lWidth, out int lHeight)
-		{
-			fixed (byte* lDataPtr = lData)
+		public static void GetWebPDimensions(byte[] lData, out int lWidth, out int lHeight)
+        {
+            /**
+             *  Need to wrap that in a try finally
+             */
+
+            GCHandle lHandle = GCHandle.Alloc(lData, GCHandleType.Pinned);
 			{
+                IntPtr lDataPtr = lHandle.AddrOfPinnedObject();
 				lWidth = 0;
 				lHeight = 0;
-				if (NativeBindings.WebPGetInfo((IntPtr)lDataPtr, (UIntPtr)lData.Length, ref lWidth, ref lHeight) == 0)
+				if (NativeBindings.WebPGetInfo(lDataPtr, (UIntPtr)lData.Length, ref lWidth, ref lHeight) == 0)
 				{
 					throw new Exception("Invalid WebP header detected");
 				}
 			}
+            lHandle.Free();
 		}
 
 		/// <summary>
@@ -99,14 +105,16 @@ namespace WebP
 		/// <param name="lMipmaps">If set to <c>true</c> l mipmaps.</param>
 		/// <param name="lError">L error.</param>
 		/// <param name="scalingFunction">Scaling function.</param>
-		public static unsafe byte[] LoadRGBAFromWebP(byte[] lData, ref int lWidth, ref int lHeight, bool lMipmaps, out Error lError, ScalingFunction scalingFunction = null)
+		public static byte[] LoadRGBAFromWebP(byte[] lData, ref int lWidth, ref int lHeight, bool lMipmaps, out Error lError, ScalingFunction scalingFunction = null)
 		{
 			lError = 0;
 			byte[] lRawData = null;
 			int lLength = lData.Length;
 
-			fixed (byte* lDataPtr = lData)
-			{
+            GCHandle lHandle = GCHandle.Alloc(lData, GCHandleType.Pinned);
+            {
+                IntPtr lDataPtr = lHandle.AddrOfPinnedObject();
+
 				// If we've been supplied a function to alter the width and height, use that now.
 				if (scalingFunction != null)
 				{
@@ -119,15 +127,16 @@ namespace WebP
 				{
 					numBytesRequired = Mathf.CeilToInt((numBytesRequired * 4.0f) / 3.0f);
 				}
-				
-				lRawData = new byte[numBytesRequired];
-				fixed (byte* lRawDataPtr = lRawData)
+
+                lRawData = new byte[numBytesRequired];
+				GCHandle lOutHandle = GCHandle.Alloc(lRawData, GCHandleType.Pinned);
+				IntPtr lRawDataPtr = lOutHandle.AddrOfPinnedObject();
 				{
 					int lStride = 4 * lWidth;
 
 					// As we have to reverse the y order of the data, we pass through a negative stride and 
 					// pass through a pointer to the last line of the data.
-					byte* lTmpDataPtr = lRawDataPtr + (lHeight - 1) * lStride;
+                    IntPtr lTmpDataPtr = (IntPtr)(lRawDataPtr.ToInt32() + (lHeight - 1) * lStride);
 					
 					WebPDecoderConfig config = new WebPDecoderConfig();
 					
@@ -162,14 +171,17 @@ namespace WebP
 					config.output.is_external_memory = 1;
 
 					// Decode
-					result = NativeBindings.WebPDecode((IntPtr)lDataPtr, (UIntPtr)lLength, ref config);
+					result = NativeBindings.WebPDecode(lDataPtr, (UIntPtr)lLength, ref config);
 					if (result != VP8StatusCode.VP8_STATUS_OK)
 					{
 						throw new Exception(string.Format("Failed WebPDecode with error {0}.", result.ToString()));
 					}
 				}
+                lOutHandle.Free();
 				lError = Error.Success;
-			}
+            }
+            lHandle.Free();
+
 			return lRawData;
 		}
 
@@ -179,7 +191,7 @@ namespace WebP
         /// <param name="lData"></param>
         /// <param name="lError"></param>
         /// <returns></returns>
-		public static unsafe Texture2D CreateTexture2DFromWebP(byte[] lData, bool lMipmaps, bool lLinear, out Error lError, ScalingFunction scalingFunction = null )
+		public static Texture2D CreateTexture2DFromWebP(byte[] lData, bool lMipmaps, bool lLinear, out Error lError, ScalingFunction scalingFunction = null )
         {
             lError = 0;
             Texture2D lTexture2D = null;
@@ -205,7 +217,7 @@ namespace WebP
         /// <param name="lTexture2D"></param>
         /// <param name="lData"></param>
         /// <param name="lError"></param>
-        public static unsafe void LoadWebP(this Texture2D lTexture2D, byte[] lData, out Error lError, ScalingFunction scalingFunction = null)
+        public static void LoadWebP(this Texture2D lTexture2D, byte[] lData, out Error lError, ScalingFunction scalingFunction = null)
         {
             lError = 0;
 			bool lMipmaps = lTexture2D.mipmapCount != 1;
@@ -229,7 +241,7 @@ namespace WebP
         /// <param name="lTexture2D"></param>
         /// <param name="lError"></param>
         /// <returns></returns>
-        public static unsafe byte[] EncodeToWebP(this Texture2D lTexture2D, float lQuality, out Error lError)
+        public static byte[] EncodeToWebP(this Texture2D lTexture2D, float lQuality, out Error lError)
         {
             lError = 0;
 
@@ -271,9 +283,8 @@ namespace WebP
             finally
             {
                 NativeBindings.WebPSafeFree(lResult);
+                lPinnedArray.Free();
             }
-
-            lPinnedArray.Free();
 
             return lOutputBuffer;
         }
