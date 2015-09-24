@@ -15,8 +15,22 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8D57630D048677EA00EA77CD"
-               BuildableName = "RenderingPlugin.bundle"
-               BlueprintName = "RenderingPlugin"
+               BuildableName = "libwebp.bundle"
+               BlueprintName = "libwebp-osx"
+               ReferencedContainer = "container:libwebp.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A7F2A8791BB4A9EB0025179C"
+               BuildableName = "liblibwebp-ios.a"
+               BlueprintName = "libwebp-ios"
                ReferencedContainer = "container:libwebp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,13 +43,22 @@
       buildConfiguration = "Debug">
       <Testables>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "8D57630D048677EA00EA77CD"
+            BuildableName = "libwebp.bundle"
+            BlueprintName = "libwebp-osx"
+            ReferencedContainer = "container:libwebp.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
@@ -43,8 +66,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D57630D048677EA00EA77CD"
-            BuildableName = "RenderingPlugin.bundle"
-            BlueprintName = "RenderingPlugin"
+            BuildableName = "libwebp.bundle"
+            BlueprintName = "libwebp-osx"
             ReferencedContainer = "container:libwebp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -61,8 +84,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D57630D048677EA00EA77CD"
-            BuildableName = "RenderingPlugin.bundle"
-            BlueprintName = "RenderingPlugin"
+            BuildableName = "libwebp.bundle"
+            BlueprintName = "libwebp-osx"
             ReferencedContainer = "container:libwebp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

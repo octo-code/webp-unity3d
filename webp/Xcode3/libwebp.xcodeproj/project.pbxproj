@@ -81,7 +81,92 @@
 		A7F2A86C1BB48F580025179C /* rescaler.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8631BB48F580025179C /* rescaler.c */; };
 		A7F2A86D1BB48F580025179C /* thread.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8651BB48F580025179C /* thread.c */; };
 		A7F2A86E1BB48F580025179C /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8671BB48F580025179C /* utils.c */; };
+		A7F2A8911BB4AFED0025179C /* quant_levels_dec.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A85D1BB48F580025179C /* quant_levels_dec.c */; };
+		A7F2A8921BB4AFED0025179C /* quant_levels.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A85F1BB48F580025179C /* quant_levels.c */; };
+		A7F2A8931BB4AFED0025179C /* random.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8611BB48F580025179C /* random.c */; };
+		A7F2A8941BB4AFED0025179C /* rescaler.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8631BB48F580025179C /* rescaler.c */; };
+		A7F2A8951BB4AFED0025179C /* thread.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8651BB48F580025179C /* thread.c */; };
+		A7F2A8961BB4AFED0025179C /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8671BB48F580025179C /* utils.c */; };
+		A7F2A8971BB4AFED0025179C /* bit_reader.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A84A1BB48F520025179C /* bit_reader.c */; };
+		A7F2A8981BB4AFED0025179C /* bit_writer.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A84C1BB48F520025179C /* bit_writer.c */; };
+		A7F2A8991BB4AFED0025179C /* color_cache.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A84E1BB48F520025179C /* color_cache.c */; };
+		A7F2A89A1BB4AFED0025179C /* filters.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8511BB48F520025179C /* filters.c */; };
+		A7F2A89B1BB4AFED0025179C /* huffman_encode.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8531BB48F520025179C /* huffman_encode.c */; };
+		A7F2A89C1BB4AFED0025179C /* huffman.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8551BB48F520025179C /* huffman.c */; };
+		A7F2A89D1BB4B0120025179C /* upsampling_mips_dsp_r2.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8071BB48F020025179C /* upsampling_mips_dsp_r2.c */; };
+		A7F2A89E1BB4B0120025179C /* upsampling_neon.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8081BB48F020025179C /* upsampling_neon.c */; };
+		A7F2A89F1BB4B0120025179C /* upsampling_sse2.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8091BB48F020025179C /* upsampling_sse2.c */; };
+		A7F2A8A01BB4B0120025179C /* upsampling.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A80A1BB48F020025179C /* upsampling.c */; };
+		A7F2A8A11BB4B0120025179C /* yuv_mips_dsp_r2.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A80B1BB48F020025179C /* yuv_mips_dsp_r2.c */; };
+		A7F2A8A21BB4B0120025179C /* yuv_mips32.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A80C1BB48F020025179C /* yuv_mips32.c */; };
+		A7F2A8A31BB4B0120025179C /* yuv_sse2.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A80D1BB48F020025179C /* yuv_sse2.c */; };
+		A7F2A8A41BB4B0120025179C /* yuv.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A80F1BB48F020025179C /* yuv.c */; };
+		A7F2A8A51BB4B0120025179C /* alpha_processing_mips_dsp_r2.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7D71BB48EF90025179C /* alpha_processing_mips_dsp_r2.c */; };
+		A7F2A8A61BB4B0120025179C /* alpha_processing_sse2.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7D81BB48EF90025179C /* alpha_processing_sse2.c */; };
+		A7F2A8A71BB4B0120025179C /* alpha_processing.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7D91BB48EF90025179C /* alpha_processing.c */; };
+		A7F2A8A81BB4B0120025179C /* cpu.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7DA1BB48EF90025179C /* cpu.c */; };
+		A7F2A8A91BB4B0120025179C /* dec_clip_tables.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7DB1BB48EF90025179C /* dec_clip_tables.c */; };
+		A7F2A8AA1BB4B0120025179C /* dec_mips_dsp_r2.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7DC1BB48EF90025179C /* dec_mips_dsp_r2.c */; };
+		A7F2A8AB1BB4B0120025179C /* dec_mips32.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7DD1BB48EF90025179C /* dec_mips32.c */; };
+		A7F2A8AC1BB4B0120025179C /* dec_neon.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7DE1BB48EF90025179C /* dec_neon.c */; };
+		A7F2A8AD1BB4B0120025179C /* dec_sse2.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7DF1BB48EF90025179C /* dec_sse2.c */; };
+		A7F2A8AE1BB4B0120025179C /* dec.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7E01BB48EF90025179C /* dec.c */; };
+		A7F2A8AF1BB4B0120025179C /* enc_avx2.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7E21BB48EF90025179C /* enc_avx2.c */; };
+		A7F2A8B01BB4B0120025179C /* enc_mips_dsp_r2.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7E31BB48EF90025179C /* enc_mips_dsp_r2.c */; };
+		A7F2A8B11BB4B0120025179C /* enc_mips32.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7E41BB48EF90025179C /* enc_mips32.c */; };
+		A7F2A8B21BB4B0120025179C /* enc_neon.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7E51BB48EF90025179C /* enc_neon.c */; };
+		A7F2A8B31BB4B0120025179C /* enc_sse2.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7E61BB48EF90025179C /* enc_sse2.c */; };
+		A7F2A8B41BB4B0120025179C /* enc.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7E71BB48EF90025179C /* enc.c */; };
+		A7F2A8B51BB4B0120025179C /* filters_mips_dsp_r2.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7E81BB48EF90025179C /* filters_mips_dsp_r2.c */; };
+		A7F2A8B61BB4B0120025179C /* lossless_mips_dsp_r2.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7E91BB48EF90025179C /* lossless_mips_dsp_r2.c */; };
+		A7F2A8B71BB4B0120025179C /* lossless_mips32.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7EA1BB48EF90025179C /* lossless_mips32.c */; };
+		A7F2A8B81BB4B0120025179C /* lossless_neon.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7EB1BB48EF90025179C /* lossless_neon.c */; };
+		A7F2A8B91BB4B0120025179C /* lossless_sse2.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7EC1BB48EF90025179C /* lossless_sse2.c */; };
+		A7F2A8BA1BB4B0120025179C /* lossless.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7ED1BB48EF90025179C /* lossless.c */; };
+		A7F2A8BB1BB4B0230025179C /* near_lossless.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A82E1BB48F130025179C /* near_lossless.c */; };
+		A7F2A8BC1BB4B0230025179C /* picture_csp.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A82F1BB48F130025179C /* picture_csp.c */; };
+		A7F2A8BD1BB4B0230025179C /* picture_psnr.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8301BB48F130025179C /* picture_psnr.c */; };
+		A7F2A8BE1BB4B0230025179C /* picture_rescale.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8311BB48F130025179C /* picture_rescale.c */; };
+		A7F2A8BF1BB4B0230025179C /* picture_tools.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8321BB48F130025179C /* picture_tools.c */; };
+		A7F2A8C01BB4B0230025179C /* picture.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8331BB48F130025179C /* picture.c */; };
+		A7F2A8C11BB4B0230025179C /* quant.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8341BB48F130025179C /* quant.c */; };
+		A7F2A8C21BB4B0230025179C /* syntax.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8351BB48F130025179C /* syntax.c */; };
+		A7F2A8C31BB4B0230025179C /* token.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8361BB48F130025179C /* token.c */; };
+		A7F2A8C41BB4B0230025179C /* tree.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8371BB48F130025179C /* tree.c */; };
+		A7F2A8C51BB4B0230025179C /* vp8l.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8391BB48F130025179C /* vp8l.c */; };
+		A7F2A8C61BB4B0230025179C /* webpenc.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A83B1BB48F130025179C /* webpenc.c */; };
+		A7F2A8C71BB4B0230025179C /* alpha.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8191BB48F0D0025179C /* alpha.c */; };
+		A7F2A8C81BB4B0230025179C /* analysis.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A81A1BB48F0D0025179C /* analysis.c */; };
+		A7F2A8C91BB4B0230025179C /* backward_references.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A81B1BB48F0D0025179C /* backward_references.c */; };
+		A7F2A8CA1BB4B0230025179C /* config.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A81D1BB48F0D0025179C /* config.c */; };
+		A7F2A8CB1BB4B0230025179C /* cost.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A81E1BB48F0D0025179C /* cost.c */; };
+		A7F2A8CC1BB4B0230025179C /* filter.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8201BB48F0D0025179C /* filter.c */; };
+		A7F2A8CD1BB4B0230025179C /* frame.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8211BB48F0D0025179C /* frame.c */; };
+		A7F2A8CE1BB4B0230025179C /* histogram.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8221BB48F0D0025179C /* histogram.c */; };
+		A7F2A8CF1BB4B0230025179C /* iterator.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A8241BB48F0D0025179C /* iterator.c */; };
+		A7F2A8D01BB4B02E0025179C /* alpha.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7CB1BB48E960025179C /* alpha.c */; };
+		A7F2A8D11BB4B02E0025179C /* buffer.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7CD1BB48E960025179C /* buffer.c */; };
+		A7F2A8D21BB4B02E0025179C /* frame.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7CF1BB48E960025179C /* frame.c */; };
+		A7F2A8D31BB4B02E0025179C /* idec.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7D01BB48E960025179C /* idec.c */; };
+		A7F2A8D41BB4B02E0025179C /* io.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7D11BB48E960025179C /* io.c */; };
+		A7F2A8D51BB4B02E0025179C /* quant.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7BE1BB48E8F0025179C /* quant.c */; };
+		A7F2A8D61BB4B02E0025179C /* tree.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7BF1BB48E8F0025179C /* tree.c */; };
+		A7F2A8D71BB4B02E0025179C /* vp8.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7C01BB48E8F0025179C /* vp8.c */; };
+		A7F2A8D81BB4B02E0025179C /* vp8l.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7C21BB48E8F0025179C /* vp8l.c */; };
+		A7F2A8D91BB4B02E0025179C /* webp.c in Sources */ = {isa = PBXBuildFile; fileRef = A7F2A7C41BB48E8F0025179C /* webp.c */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A7F2A8781BB4A9EB0025179C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0AA1909FFE8422F4C02AAC07 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
@@ -197,6 +282,7 @@
 		A7F2A8731BB48F620025179C /* mux_types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mux_types.h; path = ../libwebp/src/webp/mux_types.h; sourceTree = "<group>"; };
 		A7F2A8741BB48F620025179C /* mux.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mux.h; path = ../libwebp/src/webp/mux.h; sourceTree = "<group>"; };
 		A7F2A8751BB48F620025179C /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = types.h; path = ../libwebp/src/webp/types.h; sourceTree = "<group>"; };
+		A7F2A87A1BB4A9EB0025179C /* liblibwebp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibwebp.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +291,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D576314048677EA00EA77CD /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7F2A8771BB4A9EB0025179C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,8 +336,6 @@
 			children = (
 				A7F2A8481BB48F470025179C /* utils */,
 				A7F2A7BD1BB48E7C0025179C /* webp */,
-				A7F2A7BC1BB48E770025179C /* mux */,
-				A7F2A7BB1BB48E6F0025179C /* demux */,
 				A7F2A7BA1BB48E670025179C /* dsp */,
 				A7F2A7B91BB48E540025179C /* enc */,
 				A7F2A7B81BB48E480025179C /* dec */,
@@ -256,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				8D576316048677EA00EA77CD /* libwebp.bundle */,
+				A7F2A87A1BB4A9EB0025179C /* liblibwebp.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -358,20 +450,6 @@
 			name = dsp;
 			sourceTree = "<group>";
 		};
-		A7F2A7BB1BB48E6F0025179C /* demux */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = demux;
-			sourceTree = "<group>";
-		};
-		A7F2A7BC1BB48E770025179C /* mux */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = mux;
-			sourceTree = "<group>";
-		};
 		A7F2A7BD1BB48E7C0025179C /* webp */ = {
 			isa = PBXGroup;
 			children = (
@@ -422,9 +500,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D57630D048677EA00EA77CD /* RenderingPlugin */ = {
+		8D57630D048677EA00EA77CD /* libwebp-osx */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1DEB911A08733D790010E9CD /* Build configuration list for PBXNativeTarget "RenderingPlugin" */;
+			buildConfigurationList = 1DEB911A08733D790010E9CD /* Build configuration list for PBXNativeTarget "libwebp-osx" */;
 			buildPhases = (
 				8D57630F048677EA00EA77CD /* Resources */,
 				8D576311048677EA00EA77CD /* Sources */,
@@ -434,11 +512,28 @@
 			);
 			dependencies = (
 			);
-			name = RenderingPlugin;
+			name = "libwebp-osx";
 			productInstallPath = "$(HOME)/Library/Bundles";
 			productName = RenderingPlugin;
 			productReference = 8D576316048677EA00EA77CD /* libwebp.bundle */;
 			productType = "com.apple.product-type.bundle";
+		};
+		A7F2A8791BB4A9EB0025179C /* libwebp-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7F2A88F1BB4A9EB0025179C /* Build configuration list for PBXNativeTarget "libwebp-ios" */;
+			buildPhases = (
+				A7F2A8761BB4A9EB0025179C /* Sources */,
+				A7F2A8771BB4A9EB0025179C /* Frameworks */,
+				A7F2A8781BB4A9EB0025179C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "libwebp-ios";
+			productName = libwebp;
+			productReference = A7F2A87A1BB4A9EB0025179C /* liblibwebp.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -446,6 +541,11 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				TargetAttributes = {
+					A7F2A8791BB4A9EB0025179C = {
+						CreatedOnToolsVersion = 6.4;
+					};
+				};
 			};
 			buildConfigurationList = 1DEB911E08733D790010E9CD /* Build configuration list for PBXProject "libwebp" */;
 			compatibilityVersion = "Xcode 3.1";
@@ -461,7 +561,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D57630D048677EA00EA77CD /* RenderingPlugin */,
+				8D57630D048677EA00EA77CD /* libwebp-osx */,
+				A7F2A8791BB4A9EB0025179C /* libwebp-ios */,
 			);
 		};
 /* End PBXProject section */
@@ -557,6 +658,86 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A7F2A8761BB4A9EB0025179C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7F2A8B61BB4B0120025179C /* lossless_mips_dsp_r2.c in Sources */,
+				A7F2A8D91BB4B02E0025179C /* webp.c in Sources */,
+				A7F2A8BB1BB4B0230025179C /* near_lossless.c in Sources */,
+				A7F2A8C61BB4B0230025179C /* webpenc.c in Sources */,
+				A7F2A8AE1BB4B0120025179C /* dec.c in Sources */,
+				A7F2A8981BB4AFED0025179C /* bit_writer.c in Sources */,
+				A7F2A89A1BB4AFED0025179C /* filters.c in Sources */,
+				A7F2A8D51BB4B02E0025179C /* quant.c in Sources */,
+				A7F2A8A21BB4B0120025179C /* yuv_mips32.c in Sources */,
+				A7F2A8AB1BB4B0120025179C /* dec_mips32.c in Sources */,
+				A7F2A89D1BB4B0120025179C /* upsampling_mips_dsp_r2.c in Sources */,
+				A7F2A8CD1BB4B0230025179C /* frame.c in Sources */,
+				A7F2A8971BB4AFED0025179C /* bit_reader.c in Sources */,
+				A7F2A8C51BB4B0230025179C /* vp8l.c in Sources */,
+				A7F2A89F1BB4B0120025179C /* upsampling_sse2.c in Sources */,
+				A7F2A8A81BB4B0120025179C /* cpu.c in Sources */,
+				A7F2A8BD1BB4B0230025179C /* picture_psnr.c in Sources */,
+				A7F2A8991BB4AFED0025179C /* color_cache.c in Sources */,
+				A7F2A8941BB4AFED0025179C /* rescaler.c in Sources */,
+				A7F2A8D41BB4B02E0025179C /* io.c in Sources */,
+				A7F2A8AF1BB4B0120025179C /* enc_avx2.c in Sources */,
+				A7F2A8B41BB4B0120025179C /* enc.c in Sources */,
+				A7F2A8BC1BB4B0230025179C /* picture_csp.c in Sources */,
+				A7F2A8921BB4AFED0025179C /* quant_levels.c in Sources */,
+				A7F2A8951BB4AFED0025179C /* thread.c in Sources */,
+				A7F2A8D31BB4B02E0025179C /* idec.c in Sources */,
+				A7F2A8CF1BB4B0230025179C /* iterator.c in Sources */,
+				A7F2A8CA1BB4B0230025179C /* config.c in Sources */,
+				A7F2A8C91BB4B0230025179C /* backward_references.c in Sources */,
+				A7F2A8A51BB4B0120025179C /* alpha_processing_mips_dsp_r2.c in Sources */,
+				A7F2A8BA1BB4B0120025179C /* lossless.c in Sources */,
+				A7F2A8BF1BB4B0230025179C /* picture_tools.c in Sources */,
+				A7F2A8CB1BB4B0230025179C /* cost.c in Sources */,
+				A7F2A8C21BB4B0230025179C /* syntax.c in Sources */,
+				A7F2A8D81BB4B02E0025179C /* vp8l.c in Sources */,
+				A7F2A8D01BB4B02E0025179C /* alpha.c in Sources */,
+				A7F2A8B51BB4B0120025179C /* filters_mips_dsp_r2.c in Sources */,
+				A7F2A8A41BB4B0120025179C /* yuv.c in Sources */,
+				A7F2A8D21BB4B02E0025179C /* frame.c in Sources */,
+				A7F2A8B21BB4B0120025179C /* enc_neon.c in Sources */,
+				A7F2A8C71BB4B0230025179C /* alpha.c in Sources */,
+				A7F2A8A31BB4B0120025179C /* yuv_sse2.c in Sources */,
+				A7F2A8C11BB4B0230025179C /* quant.c in Sources */,
+				A7F2A8C81BB4B0230025179C /* analysis.c in Sources */,
+				A7F2A89C1BB4AFED0025179C /* huffman.c in Sources */,
+				A7F2A8A61BB4B0120025179C /* alpha_processing_sse2.c in Sources */,
+				A7F2A89B1BB4AFED0025179C /* huffman_encode.c in Sources */,
+				A7F2A8D61BB4B02E0025179C /* tree.c in Sources */,
+				A7F2A8B91BB4B0120025179C /* lossless_sse2.c in Sources */,
+				A7F2A8B31BB4B0120025179C /* enc_sse2.c in Sources */,
+				A7F2A8B11BB4B0120025179C /* enc_mips32.c in Sources */,
+				A7F2A8D71BB4B02E0025179C /* vp8.c in Sources */,
+				A7F2A8CE1BB4B0230025179C /* histogram.c in Sources */,
+				A7F2A8AC1BB4B0120025179C /* dec_neon.c in Sources */,
+				A7F2A8A11BB4B0120025179C /* yuv_mips_dsp_r2.c in Sources */,
+				A7F2A8CC1BB4B0230025179C /* filter.c in Sources */,
+				A7F2A8C31BB4B0230025179C /* token.c in Sources */,
+				A7F2A8AD1BB4B0120025179C /* dec_sse2.c in Sources */,
+				A7F2A8A71BB4B0120025179C /* alpha_processing.c in Sources */,
+				A7F2A8C41BB4B0230025179C /* tree.c in Sources */,
+				A7F2A8961BB4AFED0025179C /* utils.c in Sources */,
+				A7F2A8B71BB4B0120025179C /* lossless_mips32.c in Sources */,
+				A7F2A8C01BB4B0230025179C /* picture.c in Sources */,
+				A7F2A8B01BB4B0120025179C /* enc_mips_dsp_r2.c in Sources */,
+				A7F2A8A91BB4B0120025179C /* dec_clip_tables.c in Sources */,
+				A7F2A8AA1BB4B0120025179C /* dec_mips_dsp_r2.c in Sources */,
+				A7F2A8D11BB4B02E0025179C /* buffer.c in Sources */,
+				A7F2A8931BB4AFED0025179C /* random.c in Sources */,
+				A7F2A8A01BB4B0120025179C /* upsampling.c in Sources */,
+				A7F2A8BE1BB4B0230025179C /* picture_rescale.c in Sources */,
+				A7F2A8911BB4AFED0025179C /* quant_levels_dec.c in Sources */,
+				A7F2A89E1BB4B0120025179C /* upsampling_neon.c in Sources */,
+				A7F2A8B81BB4B0120025179C /* lossless_neon.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
@@ -619,10 +800,90 @@
 			};
 			name = Release;
 		};
+		A7F2A88B1BB4A9EB0025179C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A7F2A88C1BB4A9EB0025179C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1DEB911A08733D790010E9CD /* Build configuration list for PBXNativeTarget "RenderingPlugin" */ = {
+		1DEB911A08733D790010E9CD /* Build configuration list for PBXNativeTarget "libwebp-osx" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DEB911B08733D790010E9CD /* Debug */,
@@ -636,6 +897,15 @@
 			buildConfigurations = (
 				1DEB911F08733D790010E9CD /* Debug */,
 				1DEB912008733D790010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7F2A88F1BB4A9EB0025179C /* Build configuration list for PBXNativeTarget "libwebp-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7F2A88B1BB4A9EB0025179C /* Debug */,
+				A7F2A88C1BB4A9EB0025179C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
