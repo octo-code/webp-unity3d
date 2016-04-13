@@ -18,3 +18,4 @@ Unity WebP API
 + Needs to support Multi-Threading
 
 + Useful Scale / Crop Calculation can be done in an Image Support Class
++ Platform support : win x86, win x86_64, ios arm7, ios arm64, android arm7, android x86, osx x86, osx x86_64, linux x86, linux x86_64
