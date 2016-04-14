@@ -1,12 +1,9 @@
 ﻿
-using System;
-using System.Text;
-using System.Collections.Generic;
-
 namespace WebP
 {
     public class Info
     {
+
         public static string GetDecoderVersion()
         {
             uint v = (uint)WebP.Extern.NativeBindings.WebPGetDecoderVersion();
@@ -24,5 +21,6 @@ namespace WebP
             var major = (v >> 16) % 256;
             return major + "." + minor + "." + revision;
         }
+
     }
 }
