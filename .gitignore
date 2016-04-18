@@ -8,3 +8,4 @@
 /unity/*.csproj
 /unity/*.sln
 /unity/*.userprefs
+/unity/build
