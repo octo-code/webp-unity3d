@@ -31,11 +31,11 @@ public class WebPTest : MonoBehaviour
 
         yield return lWebStream;
 
-    	Error lError;
+    	Status lError;
 
         Texture2D lTexture2D = Texture2DExt.CreateTexture2DFromWebP(lWebStream.bytes, true, true, out lError);
 
-		if (lError == Error.Success)
+		if (lError == Status.SUCCESS)
 		{
         	m_Material.mainTexture = lTexture2D;
 		}
